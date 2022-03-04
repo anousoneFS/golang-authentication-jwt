@@ -1,19 +1,14 @@
 package main
 
 import (
+	database "github.com/anousoneFS/golang-jwt/databases"
+	route "github.com/anousoneFS/golang-jwt/routes"
 	"github.com/gofiber/fiber/v2"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 )
 
 func main() {
-	_, err := gorm.Open(mysql.Open("root:admin123@tcp(127.0.0.1:3306)/test"), &gorm.Config{})
-	if err != nil {
-		panic("cloud not connect to the database")
-	}
+	database.Connect()
 	app := fiber.New()
-	app.Get("/hello", func(c *fiber.Ctx) error {
-		return c.SendString("hello sone")
-	})
+	route.Setup(app)
 	app.Listen(":8000")
 }
