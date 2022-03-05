@@ -3,8 +3,8 @@ package main
 import (
 	database "github.com/anousoneFS/golang-jwt/databases"
 	route "github.com/anousoneFS/golang-jwt/routes"
-	"github.com/gin-contrib/cors"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
